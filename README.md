@@ -1,6 +1,8 @@
 # Budget-Tracker
 
-    Budget-Tracker is PWA (Progressive Web Apps) application where user can add their budget detail and see the curv that shows up and down of income and expense. Mainly PWA application allows user to perform operation even if they are not connected to internet (offline). As soon as user connects to internet / comes online It will perform actual transaction.
+    Budget-Tracker is PWA (Progressive Web Apps) application where user can add their budget detail and see the curv 
+    that shows up and down of income and expense.  Mainly PWA application allows user to perform operation even if they are not connected to internet (offline).
+    As soon as user connects to internet / comes online It will perform actual transaction.
 
 ### Technology 
     - Mongoose api which help to connect Mongo DB
@@ -32,7 +34,8 @@ Project Source code : https://github.com/bhumisha/Budget-Tracker_PWA
 This application is deployed on Heroku. PFB Heroku link
 https://budget-tracker-pwa-83.herokuapp.com/
 
-For testing this application, user has to set browser offline after loading the application, still he can perform budget tracker operations. after setting back to network to online, actual api call perfomed.
+For testing this application, user has to set browser offline after loading the application, 
+still he can perform budget tracker operations. after setting back to network to online, actual api call perfomed.
 
 ### Images
 
@@ -47,4 +50,5 @@ Service worker and caching data
 ![](public/assets/cache.png)
 
 ### Questions
-If you have any additional questions about the repo, open an issue or contact me directly at bhumishadave@gmail.com. You can fine more of my work at bhumisha
+If you have any additional questions about the repo, open an issue or contact me directly at bhumishadave@gmail.com. 
+You can fine more of my work at bhumisha
