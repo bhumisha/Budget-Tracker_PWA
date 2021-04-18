@@ -1,5 +1,5 @@
 // // Uncomment the lines below to set up the cache files
-console.log("Fro Service worker");
+console.log("From Service worker");
 const CACHE_NAME = 'budgetTracker-cache-v1';
 const DATA_CACHE_NAME = 'budgetTracker_data-cache-v1';
 

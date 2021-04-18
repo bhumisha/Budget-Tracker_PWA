@@ -19,7 +19,7 @@ request.onsuccess = function(event) {
     // check if app is online, if yes run saveBudgetEntry() function to send all local db data to api
     if (navigator.onLine) {
       // we haven't created this yet, but we will soon, so let's comment it out for now
-      // saveBudgetEntry();
+       saveBudgetEntry();
     }
   };
   
@@ -31,10 +31,10 @@ request.onsuccess = function(event) {
   // This function will be executed if we attempt to submit a new budget entry and there's no internet connection
 function saveRecord(record) {
     // open a new transaction with the database with read and write permissions 
-    const transaction = db.transaction(['add_budget'], 'readwrite');
+    const trans = db.transaction(['add_budget'], 'readwrite');
   
     // access the object store for `add_budget`
-    const budgetObjectStore = transaction.objectStore('add_budget');
+    const budgetObjectStore = trans.objectStore('add_budget');
   
     // add record to your store with add method
     budgetObjectStore.add(record);
@@ -42,10 +42,10 @@ function saveRecord(record) {
 
   function saveBudgetEntry() {
     // open a transaction on your db
-    const transaction = db.transaction(['add_budget'], 'readwrite');
+    const trans = db.transaction(['add_budget'], 'readwrite');
   
     // access your object store
-    const budgetObjectStore = transaction.objectStore('add_budget');
+    const budgetObjectStore = trans.objectStore('add_budget');
   
     // get all records from store and set to a variable
     const getAll = budgetObjectStore.getAll();
@@ -67,14 +67,14 @@ function saveRecord(record) {
                 if (serverResponse.message) {
                     throw new Error(serverResponse);
                 }
-                // open one more transaction
-                const transaction = db.transaction(['add_budget'], 'readwrite');
+                // open one more trans
+                const trans = db.transaction(['add_budget'], 'readwrite');
                 // access the new_pizza object store
-                const budgetObjectStore = transaction.objectStore('add_budget');
-                alert('Your Budget Entry has been saved!!');
+                const budgetObjectStore = trans.objectStore('add_budget');
+                
                 // clear all items in your store
                 budgetObjectStore.clear();
-
+                alert('Your Budget Entry has been saved!!');
                
             })
             .catch(err => {
