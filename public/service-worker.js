@@ -54,63 +54,22 @@ self.addEventListener('activate', function (evt) {
     );
 });
 
-// // Respond with cached resources
-// self.addEventListener('fetch', function (evt) {
-//   //console.log('fetch request : ' + evt.request.url)
-//   evt.respondWith(
-//       caches.match(evt.request).then(function (request) {
-//           if (request) { // if cache is available, respond with cache
-//               //console.log('responding with cache : ' + evt.request.url)
-//               return request
-//           } else { // if there are no cache, try fetching request
-//               console.log('file is not cached, fetching : ' + evt.request.url)
-//               return fetch(evt.request)
-//           }
-
-//           // You can omit if/else for console.log & put one line below like this too.
-//           // return request || fetch(evt.request)
-//       })
-//   )
-// })
-
-// Intercept fetch requests
-self.addEventListener('fetch', function(evt) {
-    if (evt.request.url.includes('/api/transaction')) {
-        evt.respondWith(
-          caches
-            .open(DATA_CACHE_NAME)
-            .then(cache => {
+// Respond with cached resources
+self.addEventListener('fetch', function (evt) {
+  //console.log('fetch request : ' + evt.request.url)
+  evt.respondWith(
+      caches.match(evt.request).then(function (request) {
+          if (request) { // if cache is available, respond with cache
+              //console.log('responding with cache : ' + evt.request.url)
+              return request
+          } else { // if there are no cache, try fetching request
+              console.log('file is not cached, fetching : ' + evt.request.url)
               return fetch(evt.request)
-                .then(response => {
-                  // If the response was good, clone it and store it in the cache.
-                  if (response.status === 200) {
-                    cache.put(evt.request.url, response.clone());
-                  }
-    
-                  return response;
-                })
-                .catch(err => {
-                  // Network request failed, try to get it from the cache.
-                  return cache.match(evt.request);
-                });
-            })
-            .catch(err => console.log(err))
-        );
-    
-        return;
-      }
-      evt.respondWith(
-        caches.match(evt.request).then(function (request) {
-            if (request) { // if cache is available, respond with cache
-                //console.log('responding with cache : ' + evt.request.url)
-                return request
-            } else { // if there are no cache, try fetching request
-                console.log('file is not cached, fetching : ' + evt.request.url)
-                return fetch(evt.request)
-            }
+          }
 
-            // You can omit if/else for console.log & put one line below like this too.
-            // return request || fetch(evt.request)
-        })
-    )
-});
+          // You can omit if/else for console.log & put one line below like this too.
+          // return request || fetch(evt.request)
+      })
+  )
+})
+
